@@ -41,7 +41,7 @@ setInterval(function() {
       alarmStatus.innerHTML = "Alarm set for " + alarmTime;
 
       setTimeout(function() {
-        alert("Wake up!");
+        alert("Hey! Wassup!");
         alarmStatus.innerHTML = "Alarm not set";
       }, alarmTime.getTime() - currentTime.getTime());
     });
