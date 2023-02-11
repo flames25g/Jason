@@ -16,3 +16,32 @@ setInterval(function() {
       (minutes < 10 ? "0" + minutes : minutes) + ":" +
       (seconds < 10 ? "0" + seconds : seconds);
   }, 1000);
+
+
+
+
+
+
+  const alarmTimeInput = document.getElementById("alarmTime");
+    const setAlarmButton = document.getElementById("setAlarm");
+    const alarmStatus = document.getElementById("alarmStatus");
+
+    setAlarmButton.addEventListener("click", function() {
+      const alarmTime = new Date();
+      alarmTime.setHours(alarmTimeInput.value.split(":")[0]);
+      alarmTime.setMinutes(alarmTimeInput.value.split(":")[1]);
+      alarmTime.setSeconds(0);
+
+      const currentTime = new Date();
+
+      if (alarmTime <= currentTime) {
+        alarmTime.setDate(alarmTime.getDate() + 1);
+      }
+
+      alarmStatus.innerHTML = "Alarm set for " + alarmTime;
+
+      setTimeout(function() {
+        alert("Wake up!");
+        alarmStatus.innerHTML = "Alarm not set";
+      }, alarmTime.getTime() - currentTime.getTime());
+    });
