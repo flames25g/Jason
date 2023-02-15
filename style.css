@@ -15,10 +15,11 @@ body {
 
 .container {
   justify-content: space-evenly;
+  margin: 0 auto;
 }
 
 .acontainer {
-  padding: 20px 70px;
+  padding: 10px 200px;
   color: #000000;
 }
 
@@ -87,9 +88,12 @@ body {
   text-align: center;
 }
 
+.fw-normal {
+  padding-top: 25px;
+}
+
 .marketing .col-lg-4 p {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
+  margin: 0 0 0 0;
 }
 
 /* Featurettes
