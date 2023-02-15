@@ -46,6 +46,10 @@ body {
   font-size: 30px;
 }
 
+.next {
+  font-weight: 500;
+}
+
 .place-container {
   text-align: end;
 }
