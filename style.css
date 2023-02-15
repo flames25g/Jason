@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap");
+
 .nav-link {
   color: black;
   font-weight: 500;
@@ -12,11 +14,71 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   background-color: beige;
+  font-family: "Poppins", sans-serif;
 }
 
 #dday,
 #date {
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.acontainer {
+  padding: 20px 70px;
+  color: #000000;
+}
+
+.current-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.date-contiainer {
+  font-weight: 100;
+}
+
+.date-contiainer .time {
+  font-size: 70px;
+}
+
+.date-contiainer #am-pm {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.date-contiainer .date {
+  font-size: 30px;
+}
+
+.place-container {
+  text-align: end;
+}
+
+.place-container .time-zone {
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.place-container .country {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.others {
+  display: flex;
+  flex-direction: column;
+  background: rgba(24, 24, 27, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid #fff;
+  color: #fff;
+  width: 250px;
+}
+
+.weather-item {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -30,6 +92,11 @@ body {
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
+  background: rgba(24, 24, 27, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid #fff;
 }
 
 /* Declare heights because of positioning of img element */
@@ -76,6 +143,11 @@ body {
     margin-bottom: 1.25rem;
     font-size: 1.25rem;
     line-height: 1.4;
+    background: rgba(24, 24, 27, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px solid #fff;
   }
 
   .featurette-heading {
