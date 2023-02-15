@@ -1,6 +1,6 @@
 // Current Date, Time
 
-const days = [
+let days = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -9,7 +9,7 @@ const days = [
   "Saturday",
   "Sunday",
 ];
-const months = [
+let months = [
   "Jan",
   "Feb",
   "Mar",
@@ -25,16 +25,16 @@ const months = [
 ];
 
 setInterval(() => {
-  const time = new Date();
-  const month = time.getMonth();
-  const date = time.getDate();
-  const day = time.getDay();
-  const hour = time.getHours();
-  const hoursIn12HoursFormat = hour >= 13 ? hour % 12 : hour;
-  const minutes = time.getMinutes();
-  const minutesFormat = minutes <= 10 ? "0" + minutes : minutes;
-  const seconds = time.getSeconds();
-  const ampm = hour >= 12 ? "PM" : "AM";
+  let time = new Date();
+  let month = time.getMonth();
+  let date = time.getDate();
+  let day = time.getDay();
+  let hour = time.getHours();
+  let hoursIn12HoursFormat = hour >= 13 ? hour % 12 : hour;
+  let minutes = time.getMinutes();
+  let minutesFormat = minutes <= 10 ? "0" + minutes : minutes;
+  let seconds = time.getSeconds();
+  let ampm = hour >= 12 ? "PM" : "AM";
 
   document.getElementById("time").innerHTML =
     (hoursIn12HoursFormat < 10
@@ -48,7 +48,7 @@ setInterval(() => {
     `<span id="am-pm">${ampm}</span>`;
 
   document.getElementById("date").innerHTML =
-    days[day] + " " + date + " " + months[month] + ", ";
+    days[day] + " " + date + " " + months[month];
 }, 1000);
 
 // Weather
@@ -71,10 +71,10 @@ function getWeatherData() {
   });
 }
 
-const currentWeatherItemsEl = document.getElementById("current-weather-items");
-const timezone = document.getElementById("time-zone");
-const country = document.getElementById("country");
-const currentTempEl = document.getElementById("current-temp");
+let currentWeatherItemsEl = document.getElementById("current-weather-items");
+let timezone = document.getElementById("time-zone");
+let country = document.getElementById("country");
+let currentTempEl = document.getElementById("current-temp");
 
 function showWeatherData(data) {
   let { humidity, pressure } = data.main;
@@ -84,7 +84,7 @@ function showWeatherData(data) {
   timezone.innerHTML = data.timezone;
   country.innerHTML = data.coord.lat + "N   " + data.coord.lon + "E";
 
-  const timezoneOffset = data.timezone;
+  let timezoneOffset = data.timezone;
   timezone.innerHTML = timezoneOffset;
 
   currentWeatherItemsEl.innerHTML = `<div class="weather-item">
@@ -111,17 +111,17 @@ function showWeatherData(data) {
 
 // Alarm Clock
 
-const alarmTimeInput = document.getElementById("alarmTime");
-const setAlarmButton = document.getElementById("setAlarm");
-const alarmStatus = document.getElementById("alarmStatus");
+let alarmTimeInput = document.getElementById("alarmTime");
+let setAlarmButton = document.getElementById("setAlarm");
+let alarmStatus = document.getElementById("alarmStatus");
 
 setAlarmButton.addEventListener("click", function () {
-  const alarmTime = new Date();
+  let alarmTime = new Date();
   alarmTime.setHours(alarmTimeInput.value.split(":")[0]);
   alarmTime.setMinutes(alarmTimeInput.value.split(":")[1]);
   alarmTime.setSeconds(0);
 
-  const currentTime = new Date();
+  let currentTime = new Date();
 
   if (alarmTime <= currentTime) {
     alarmTime.setDate(alarmTime.getDate() + 1);
@@ -137,15 +137,15 @@ setAlarmButton.addEventListener("click", function () {
 
 // D-Day
 
-const today = new Date();
-const currentMonth = today.getMonth();
-const nextMonth = currentMonth + 1;
-const lastDayOfCurrentMonth = new Date(
+let today = new Date();
+let currentMonth = today.getMonth();
+let nextMonth = currentMonth + 1;
+let lastDayOfCurrentMonth = new Date(
   today.getFullYear(),
   nextMonth,
   0
 ).getDate();
-const daysUntilEndOfMonth = lastDayOfCurrentMonth - today.getDate();
+let daysUntilEndOfMonth = lastDayOfCurrentMonth - today.getDate();
 
 let ddayText = `You have ${daysUntilEndOfMonth} days left.`;
 if (daysUntilEndOfMonth === 1) {
