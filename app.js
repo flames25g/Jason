@@ -108,32 +108,6 @@ function showWeatherData(data) {
             </div>`;
 }
 
-// Alarm Clock
-
-let alarmTimeInput = document.getElementById("alarmTime");
-let setAlarmButton = document.getElementById("setAlarm");
-let alarmStatus = document.getElementById("alarmStatus");
-
-setAlarmButton.addEventListener("click", function () {
-  let alarmTime = new Date();
-  alarmTime.setHours(alarmTimeInput.value.split(":")[0]);
-  alarmTime.setMinutes(alarmTimeInput.value.split(":")[1]);
-  alarmTime.setSeconds(0);
-
-  let currentTime = new Date();
-
-  if (alarmTime <= currentTime) {
-    alarmTime.setDate(alarmTime.getDate() + 1);
-  }
-
-  alarmStatus.innerHTML = "Alarm set for " + alarmTime;
-
-  setTimeout(function () {
-    alert("Hey! Wassup!");
-    alarmStatus.innerHTML = "Alarm not set";
-  }, alarmTime.getTime() - currentTime.getTime());
-});
-
 // D-Day
 
 let today = new Date();
