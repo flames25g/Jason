@@ -44,7 +44,6 @@ setInterval(() => {
     minutesFormat +
     ":" +
     (seconds < 10 ? "0" + seconds : seconds) +
-    " " +
     `<span id="am-pm">${ampm}</span>`;
 
   document.getElementById("date").innerHTML =
