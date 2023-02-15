@@ -76,17 +76,37 @@ let country = document.getElementById("country");
 let currentTempEl = document.getElementById("current-temp");
 
 function showWeatherData(data) {
-  let { humidity, pressure } = data.main;
+  let { temp, feels_like, temp_min, temp_max, humidity, pressure } = data.main;
   let { speed } = data.wind;
   let { sunrise, sunset } = data.sys;
 
   timezone.innerHTML = data.timezone;
-  country.innerHTML = data.coord.lat + "N   " + data.coord.lon + "E";
+  country.innerHTML = data.coord.lat + "N " + data.coord.lon + "E";
 
   let timezoneOffset = data.timezone;
   timezone.innerHTML = timezoneOffset;
 
-  currentWeatherItemsEl.innerHTML = `<div class="weather-item">
+  currentWeatherItemsEl.innerHTML = `
+  <div class="weather-item">
+  <div>Temp</div>
+  <div>${temp} &deg;C</div>
+</div>
+<div class="weather-item">
+<div>Feels like</div>
+<div>${feels_like} &deg;C</div>
+</div>
+<div class="weather-item">
+<div>Temp Max</div>
+<div>${temp_max} &deg;C</div>
+</div>
+<div class="weather-item">
+<div>Temp Min</div>
+<div>${temp_min} &deg;C</div>
+</div>
+  
+  
+  
+  <div class="weather-item">
               <div>Humidity</div>
               <div>${humidity}%</div>
             </div>
