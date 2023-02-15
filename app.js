@@ -1,13 +1,13 @@
 // Current Date, Time
 
 let days = [
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
-  "Sunday",
 ];
 let months = [
   "Jan",
