@@ -26,13 +26,14 @@ let months = [
 
 setInterval(() => {
   let time = new Date();
+  let year = time.getFullYear();
   let month = time.getMonth();
   let date = time.getDate();
   let day = time.getDay();
   let hour = time.getHours();
   let hoursIn12HoursFormat = hour >= 13 ? hour % 12 : hour;
   let minutes = time.getMinutes();
-  let minutesFormat = minutes <= 10 ? "0" + minutes : minutes;
+  let minutesFormat = minutes < 10 ? "0" + minutes : minutes;
   let seconds = time.getSeconds();
   let ampm = hour >= 12 ? "PM" : "AM";
 
@@ -47,7 +48,7 @@ setInterval(() => {
     `<span id="am-pm">${ampm}</span>`;
 
   document.getElementById("date").innerHTML =
-    days[day] + " " + date + " " + months[month];
+    days[day] + " " + date + " " + months[month] + " " + year;
 }, 1000);
 
 // Weather
@@ -60,7 +61,7 @@ function getWeatherData() {
     let { latitude, longitude } = success.coords;
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
+      `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
     )
       .then((res) => res.json())
       .then((data) => {
