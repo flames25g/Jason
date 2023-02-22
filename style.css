@@ -19,13 +19,14 @@ body {
 }
 
 .acontainer {
-  padding: 10px 200px;
+  padding: 10px;
   color: #000000;
 }
 
 .current-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
   flex-wrap: wrap;
 }
 
@@ -70,7 +71,7 @@ body {
   background: rgba(24, 24, 27, 0.6);
   padding: 20px;
   border-radius: 10px;
-  margin: 10px;
+
   border: 1px solid #fff;
   color: #fff;
   width: 250px;
@@ -116,5 +117,11 @@ body {
 @media (min-width: 62em) {
   .featurette-heading {
     margin-top: 7rem;
+  }
+
+  .acontainer {
+    margin: auto;
+    padding: 10px;
+    color: #000000;
   }
 }

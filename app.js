@@ -61,7 +61,7 @@ function getWeatherData() {
     let { latitude, longitude } = success.coords;
 
     fetch(
-      `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
     )
       .then((res) => res.json())
       .then((data) => {
