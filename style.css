@@ -52,12 +52,9 @@ body {
 }
 
 .place-container {
-  text-align: end;
-}
-
-.place-container .time-zone {
   font-size: 30px;
-  font-weight: 100;
+  font-weight: 200;
+  text-align: end;
 }
 
 .place-container .country {

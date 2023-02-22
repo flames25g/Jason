@@ -77,17 +77,29 @@ let country = document.getElementById("country");
 let currentTempEl = document.getElementById("current-temp");
 
 function showWeatherData(data) {
+  let { icon, main, description } = data.weather[0];
   let { temp, feels_like, temp_min, temp_max, humidity, pressure } = data.main;
   let { speed } = data.wind;
   let { sunrise, sunset } = data.sys;
 
-  timezone.innerHTML = data.timezone;
-  country.innerHTML = data.coord.lat + "N " + data.coord.lon + "E";
-
-  let timezoneOffset = data.timezone;
-  timezone.innerHTML = timezoneOffset;
+  timezone.innerHTML = data.name;
+  country.innerHTML = data.coord.lat + " N <br>" + data.coord.lon + " E";
 
   currentWeatherItemsEl.innerHTML = `
+  
+  <div class="weather-item">
+  
+  <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weathericon">
+  </div>
+  <div class="weather-item">
+  <div>Weather</div>
+  <div>${main} </div>
+</div>
+<div class="weather-item">
+  <div></div>
+  <div>${description} </div>
+</div>
+  
   <div class="weather-item">
   <div>Temp</div>
   <div>${temp} &deg;C</div>
