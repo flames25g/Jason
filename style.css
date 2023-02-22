@@ -98,17 +98,16 @@ body {
   margin: 0 0 0 0;
 }
 
-/* Featurettes
-
-
-/* Thin out the marketing headings */
-/* rtl:begin:remove */
-.featurette-heading {
-  letter-spacing: -0.05rem;
+.map {
+  display: flex;
+  justify-items: auto;
 }
 
-.featurette-heading {
-  font-size: 50px;
+.mapa {
+  display: flex;
+  border: 2px solid rgb(165, 165, 165);
+  border-radius: 10px;
+  margin: auto;
 }
 
 @media (min-width: 62em) {
