@@ -36,11 +36,14 @@ body {
 
 .date-contiainer .time {
   font-size: 70px;
+  text-align: left;
+  width: 350px;
 }
 
 .date-contiainer #am-pm {
   font-size: 30px;
   margin-left: 20px;
+  text-align: right;
 }
 
 .date-contiainer .date {

@@ -62,6 +62,7 @@ function getWeatherData() {
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
+      // `api.openweathermap.org/data/2.5/forecast?lat=-37&lon=144&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -154,7 +155,7 @@ let lastDayOfCurrentMonth = new Date(
 let daysUntilEndOfMonth = lastDayOfCurrentMonth - today.getDate();
 
 let ddayText = `You have ${daysUntilEndOfMonth} days left.`;
-if (daysUntilEndOfMonth === 1) {
+if (daysUntilEndOfMonth === 1 || daysUntilEndOfMonth === 0) {
   ddayText = `You have ${daysUntilEndOfMonth} day left.`;
 }
 
