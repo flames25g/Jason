@@ -62,12 +62,20 @@ function getWeatherData() {
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
-      // `api.openweathermap.org/data/2.5/forecast?lat=-37&lon=144&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
     )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         showWeatherData(data);
+      });
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
+    )
+      .then((res) => res.json())
+      .then((data2) => {
+        console.log(data2);
+        weatherForecast(data2);
       });
   });
 }
@@ -75,7 +83,6 @@ function getWeatherData() {
 let currentWeatherItemsEl = document.getElementById("current-weather-items");
 let timezone = document.getElementById("time-zone");
 let country = document.getElementById("country");
-let currentTempEl = document.getElementById("current-temp");
 
 function showWeatherData(data) {
   let { icon, main, description } = data.weather[0];
@@ -121,25 +128,43 @@ function showWeatherData(data) {
   
   
   <div class="weather-item">
-              <div>Humidity</div>
-              <div>${humidity}%</div>
-            </div>
-            <div class="weather-item">
-              <div>Pressure</div>
-              <div>${pressure}</div>
-            </div>
-            <div class="weather-item">
-              <div>Wind Speed</div>
-              <div>${(speed * 3.6).toFixed(2)} km/h</div>
-            </div>
-            <div class="weather-item">
-              <div>Sunrise</div>
-              <div>${window.moment(sunrise * 1000).format("HH.mm a")}</div>
-            </div>
-            <div class="weather-item">
-              <div>Sunset</div>
-              <div>${window.moment(sunset * 1000).format("HH.mm a")}</div>
-            </div>`;
+    <div>Humidity</div>
+    <div>${humidity}%</div>
+  </div>
+  <div class="weather-item">
+    <div>Pressure</div>
+    <div>${pressure}</div>
+  </div>
+  <div class="weather-item">
+    <div>Wind Speed</div>
+    <div>${(speed * 3.6).toFixed(2)} km/h</div>
+  </div>
+  <div class="weather-item">
+    <div>Sunrise</div>
+    <div>${window.moment(sunrise * 1000).format("HH.mm a")}</div>
+  </div>
+  <div class="weather-item">
+    <div>Sunset</div>
+    <div>${window.moment(sunset * 1000).format("HH.mm a")}</div>
+  </div>`;
+}
+
+function weatherForecast(data2) {
+  let listNumber = 8;
+  let { dt } = data2.list[listNumber];
+  let { feels_like } = data2.list[listNumber].main;
+  let { main, description, icon } = data2.list[listNumber].weather[0];
+
+  document.getElementById("weather-forecast-item").innerHTML = `
+  <div class="weather-forecast-item">
+  <div>   ${window.moment(dt * 1000).format("dddd Do MMM HH:mm")}</div>
+          <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather forecast" srcset="" />
+        <div>${main}, ${description}</div>
+        <div>${feels_like} &deg;C</div>
+        
+      </div>
+  
+  `;
 }
 
 // D-Day

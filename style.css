@@ -82,6 +82,12 @@ body {
   justify-content: space-between;
 }
 
+.weather-forecast {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Marketing */
 
 .featurette-heading {
