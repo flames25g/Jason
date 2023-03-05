@@ -156,13 +156,12 @@ function weatherForecast(data2) {
   let { main, description, icon } = data2.list[listNumber].weather[0];
 
   document.getElementById("weather-forecast-item").innerHTML = `
-  <div class="weather-forecast-item">
-  <div>   ${window.moment(dt * 1000).format("dddd Do MMM HH:mm")}</div>
-          <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather forecast" srcset="" />
-        <div>${main}, ${description}</div>
-        <div>${feels_like} &deg;C</div>
-        
-      </div>
+    <div class="weather-forecast-item">
+      <div>   ${window.moment(dt * 1000).format("dddd Do MMM HH:mm")}</div>
+      <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather forecast">
+      <div>${main}, ${description}</div>
+      <div>${feels_like} &deg;C</div>
+    </div>
   
   `;
 }
@@ -185,3 +184,37 @@ if (daysUntilEndOfMonth === 1 || daysUntilEndOfMonth === 0) {
 }
 
 document.getElementById("dday").innerHTML = ddayText;
+
+// Quote of the Day
+
+const quoteText = document.querySelector(".quote"),
+  quoteBtn = document.querySelector("button"),
+  authorName = document.querySelector(".author .name"),
+  soundbtn = document.querySelector(".speak"),
+  copybtn = document.querySelector(".copy"),
+  sharebtn = document.querySelector(".share");
+
+function randomQuote(params) {
+  quoteBtn.innerHTML = "Loading Quote...";
+  fetch("https://api.quotable.io/random")
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result);
+      quoteText.innerHTML = result.content;
+      authorName.innerHTML = result.author;
+      quoteBtn.innerHTML = "New Quote";
+    });
+}
+
+soundbtn.addEventListener("click", () => {
+  let utterance = new SpeechSynthesisUtterance(
+    `${quoteText.innerHTML} by ${authorName.innerHTML}`
+  );
+  speechSynthesis.speak(utterance);
+});
+
+copybtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(quoteText.innerHTML);
+});
+
+quoteBtn.addEventListener("click", randomQuote);

@@ -18,6 +18,18 @@ body {
   margin: 0 auto;
 }
 
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0%;
+  }
+}
+
+/* First Section */
+
 .acontainer {
   padding: 10px;
   color: #000000;
@@ -29,6 +41,8 @@ body {
 
   flex-wrap: wrap;
 }
+
+/* Date Middle */
 
 .date-contiainer {
   font-weight: 100;
@@ -54,6 +68,8 @@ body {
   font-weight: 500;
 }
 
+/* Location */
+
 .place-container {
   font-size: 30px;
   font-weight: 200;
@@ -76,6 +92,78 @@ body {
   color: #fff;
   width: 250px;
 }
+
+/* Quote */
+.wrapper {
+  width: 50%;
+  margin: auto;
+}
+
+.content .quote-area {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.quote-area i:first-child {
+}
+
+.quote-area i:last-child {
+  display: flex;
+  align-items: flex-end;
+}
+
+.quote-area .quote {
+  font-size: 22px;
+  margin: 20px;
+  word-break: break-all;
+}
+
+.content .author {
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+}
+
+.wrapper .buttons {
+  border-top: 1px solid #ccc;
+}
+
+.buttons .features {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.features ul {
+  display: flex;
+}
+
+.features ul li {
+  list-style: none;
+  margin: 5px;
+  border: 2px solid;
+  border-radius: 50%;
+  height: 47px;
+  width: 47px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #636363;
+}
+
+.features ul li:hover {
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+.features button {
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* weather-forecast */
 
 .weather-item {
   display: flex;
