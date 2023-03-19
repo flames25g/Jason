@@ -51,7 +51,26 @@ setInterval(() => {
     days[day] + " " + date + " " + months[month] + " " + year;
 }, 1000);
 
-// Weather
+// D-Day
+
+let today = new Date();
+let currentMonth = today.getMonth();
+let nextMonth = currentMonth + 1;
+let lastDayOfCurrentMonth = new Date(
+  today.getFullYear(),
+  nextMonth,
+  0
+).getDate();
+let daysUntilEndOfMonth = lastDayOfCurrentMonth - today.getDate();
+
+let ddayText = `You have ${daysUntilEndOfMonth} days left.`;
+if (daysUntilEndOfMonth === 1 || daysUntilEndOfMonth === 0) {
+  ddayText = `You have ${daysUntilEndOfMonth} day left.`;
+}
+
+document.getElementById("dday").innerHTML = ddayText;
+
+// Weather now
 
 getWeatherData();
 function getWeatherData() {
@@ -67,15 +86,6 @@ function getWeatherData() {
       .then((data) => {
         console.log(data);
         showWeatherData(data);
-      });
-
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=41cd218c4549c273819aa70e8ad25629`
-    )
-      .then((res) => res.json())
-      .then((data2) => {
-        console.log(data2);
-        weatherForecast(data2);
       });
   });
 }
@@ -149,52 +159,16 @@ function showWeatherData(data) {
   </div>`;
 }
 
-function weatherForecast(data2) {
-  let listNumber = 8;
-  let { dt } = data2.list[listNumber];
-  let { feels_like } = data2.list[listNumber].main;
-  let { main, description, icon } = data2.list[listNumber].weather[0];
-
-  document.getElementById("weather-forecast-item").innerHTML = `
-    <div class="weather-forecast-item">
-      <div>   ${window.moment(dt * 1000).format("dddd Do MMM HH:mm")}</div>
-      <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather forecast">
-      <div>${main}, ${description}</div>
-      <div>${feels_like} &deg;C</div>
-    </div>
-  
-  `;
-}
-
-// D-Day
-
-let today = new Date();
-let currentMonth = today.getMonth();
-let nextMonth = currentMonth + 1;
-let lastDayOfCurrentMonth = new Date(
-  today.getFullYear(),
-  nextMonth,
-  0
-).getDate();
-let daysUntilEndOfMonth = lastDayOfCurrentMonth - today.getDate();
-
-let ddayText = `You have ${daysUntilEndOfMonth} days left.`;
-if (daysUntilEndOfMonth === 1 || daysUntilEndOfMonth === 0) {
-  ddayText = `You have ${daysUntilEndOfMonth} day left.`;
-}
-
-document.getElementById("dday").innerHTML = ddayText;
-
 // Quote of the Day
 
 const quoteText = document.querySelector(".quote"),
-  quoteBtn = document.querySelector("button"),
+  quoteBtn = document.querySelector(".quoteButton"),
   authorName = document.querySelector(".author .name"),
   soundbtn = document.querySelector(".speak"),
   copybtn = document.querySelector(".copy"),
   sharebtn = document.querySelector(".share");
 
-function randomQuote(params) {
+function randomQuote() {
   quoteBtn.innerHTML = "Loading Quote...";
   fetch("https://api.quotable.io/random")
     .then((res) => res.json())

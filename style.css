@@ -18,21 +18,12 @@ body {
   margin: 0 auto;
 }
 
-.blink {
-  animation: blinker 1s step-start infinite;
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0%;
-  }
-}
-
 /* First Section */
 
 .acontainer {
   padding: 10px;
   color: #000000;
+  display: flex;
 }
 
 .current-info {
@@ -95,14 +86,13 @@ body {
 
 /* Quote */
 .wrapper {
-  width: 50%;
   margin: auto;
 }
 
 .content .quote-area {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: auto;
 }
 
 .quote-area i:first-child {
